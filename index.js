@@ -6,7 +6,7 @@ const mongoose = require("mongoose")
 
 const app = express()
 
-app.use(cors({origin:'*',credentials:true}))
+app.use(cors({origin:'https://bulkmail-frontend-beta.vercel.app/',credentials:true}))
   
 app.use(express.json())
 
@@ -16,7 +16,12 @@ mongoose.connect("mongodb+srv://kaviyajain0030:0310@cluster0.iplds.mongodb.net/p
     console.log("Failed to connect")
 })
 
-const credential = mongoose.model("credential", {}, "bulkmail") 
+const credential = mongoose.model("credential", {}, "bulkmail")
+
+app.options('/sendmail',(req,res) =>{
+    res.header('Access-Control-Allow-Methods','POST,OPTIONS')
+    res.header('Access-Control-Allow-Headers','Content-Type')
+})
 
 app.post("/sendmail", function (req, res) {
 
