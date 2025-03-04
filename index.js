@@ -6,7 +6,8 @@ const mongoose = require("mongoose")
 
 const app = express()
 
-app.use(cors({origin:'https://bulkmail-frontend-beta.vercel.app/',credentials:true}))
+app.use(cors())
+app.use(cors({origin:'*'}))
   
 app.use(express.json())
 
@@ -17,10 +18,6 @@ mongoose.connect("mongodb+srv://kaviyajain0030:0310@cluster0.iplds.mongodb.net/p
 })
 
 const credential = mongoose.model("credential", {}, "bulkmail")
-
-app.options('/sendmail',(req,res) =>{
-    res.header('Access-Control-Allow-Origin','https://bulkmail-frontend-beta.vercel.app/')
-})
 
 app.post("/sendmail", function (req, res) {
 
