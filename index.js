@@ -7,21 +7,10 @@ const mongoose = require("mongoose")
 const app = express()
 
 app.use(cors())
-app.use(cors({origin:'*'}))
-
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "https://bulkmail-frontend-beta.vercel.app"); // update to match the domain you will make the request from
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
-  
-  app.options('*', (req, res) => { 
-    // Pre-flight request. Reply successfully:
-    res.header('Access-Control-Allow-Origin', 'https://bulkmail-frontend-beta.vercel.app');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    res.send();
-  });
+app.use(cors({
+    origin:'*',
+    methods:["GET","POST","PUT","DELETE"],
+}))
   
   
 app.use(express.json())
