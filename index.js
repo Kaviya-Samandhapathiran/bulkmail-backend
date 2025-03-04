@@ -6,10 +6,8 @@ const mongoose = require("mongoose")
 
 const app = express()
 
-// app.use(cors())
-// app.use(cors({origin:'*'}))
-
-app.use(cors(corsOptions))
+app.use(cors())
+app.use(cors({origin:'*'}))
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "https://bulkmail-frontend-beta.vercel.app"); // update to match the domain you will make the request from
@@ -25,9 +23,6 @@ app.use((req, res, next) => {
     res.send();
   });
   
-var corsOptions = {
-    origin: ["https://bulkmail-frontend-beta.vercel.app/"]
-  };
   
 app.use(express.json())
 
