@@ -6,7 +6,7 @@ const mongoose = require("mongoose")
 
 const app = express()
 
-app.use(cors({origin:"*"}))
+app.use(cors({origin:'*',credentials:true}))
   
 app.use(express.json())
 
