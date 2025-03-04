@@ -19,8 +19,7 @@ mongoose.connect("mongodb+srv://kaviyajain0030:0310@cluster0.iplds.mongodb.net/p
 const credential = mongoose.model("credential", {}, "bulkmail")
 
 app.options('/sendmail',(req,res) =>{
-    res.header('Access-Control-Allow-Methods','POST,OPTIONS')
-    res.header('Access-Control-Allow-Headers','Content-Type')
+    res.header('Access-Control-Allow-Origin','https://bulkmail-frontend-beta.vercel.app/')
 })
 
 app.post("/sendmail", function (req, res) {
