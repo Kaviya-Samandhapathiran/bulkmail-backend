@@ -58,6 +58,7 @@ app.post("/sendmail", function (req, res) {
                 console.log(error)
             }
         }).then(function () {
+            res.header("Access-Control-Allow-Origin","*")
             res.send(true)
         }).catch(function () {
             res.send(false)
